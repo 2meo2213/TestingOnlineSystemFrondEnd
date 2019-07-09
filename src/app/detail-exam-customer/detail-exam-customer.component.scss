@@ -1,0 +1,136 @@
+@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css);
+body{margin-top:20px;}
+.fa-fw {width: 2em;}
+
+li{
+    margin-top: 25px !important;
+   font-size: 12px;
+   font-family: 'Open Sans',sans-serif;
+    
+}
+span{
+    float:right;
+    text-align: center;
+    margin-right: 12px;
+}
+h2{
+    font-family:"Open Sans", sans-serif;
+}
+.portlet-title {
+    background-color: #009CDE !important;
+}
+
+
+    .media {
+        border-bottom: 1px solid #ecebeb;
+        margin-bottom: -1px;
+    }
+    .user-comment-title {
+        padding: 10px 0 5px 10px;
+        font-size: 16px;
+    }
+    .reply-cm {
+        margin: 10px 0 0 8.5%;
+    }
+    .chats li.in .message .reply-arrow .arrow {
+        top: 18px;
+        border-right: 8px solid #4B8DF8;
+    }
+    .comment-scc {
+        overflow: hidden;
+    }
+
+    .comment-scc ul li {
+        float: left;
+        margin: 0px;
+        /*width: 11%;*/
+        padding-right: 15px;
+    }
+
+    .comment-scc ul li a {
+        color: #999999;
+        cursor:pointer;
+    }
+
+    .comment-scc ul li:first-child {
+        list-style: none;
+    }
+    .comment-scr {
+        max-height: 525px;
+        overflow:auto;
+        width: auto;
+    }
+    .comment-scr.slimScrollDiv {
+        overflow: inherit !important;
+    }
+
+    .comment-scr.slimScrollDiv .slimScrollBar {
+        border-radius: 2px !important;
+        opacity: 0.8 !important;
+    }
+    a{
+        text-decoration: none;
+    }
+
+    // css button
+    a.abcd{
+        position: absolute;
+        
+       
+        width: 93%;
+        height: 50px;
+        line-height: 50px;
+        font-size: 20px;
+        font-family: sans-serif;
+        text-decoration: none;
+        
+        letter-spacing: 2px;
+        background: #ccc;
+        text-align: center;
+        
+    }
+    a.abcd:before{
+        content:attr(data-text);
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        text-align:center;
+        background:#009CDE;
+        color:#fff;
+        transition:0.5s;
+        transform-origin:bottom;
+        transform:translateY(-100%) rotateX(90deg);
+        
+        
+    }
+    a.abcd:hover:before{
+        transform:translateY(0) rotateX(0deg);
+    }
+
+    a.abcd:after{
+        content:attr(data-text);
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        text-align:center;
+        background:#009CDE;
+        color:#fff;
+        transition:0.5s;
+        transform-origin:top;
+        transform:translateY(0) rotateX(0deg);
+        
+        
+    }
+    a.abcd:hover:after{
+        transform:translateY(100%) rotateX(90deg);
+    }
+    
+    .pull-right {
+        margin-top: -25px;
+    }
+    
+

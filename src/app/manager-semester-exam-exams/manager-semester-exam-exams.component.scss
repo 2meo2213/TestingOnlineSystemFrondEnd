@@ -1,0 +1,221 @@
+*{
+	margin:0;
+	padding: 0;
+}
+body{
+    color: #fff;
+}
+
+.ketquathi {
+    height: 200px;
+}
+
+h5.title-ketquathi {
+    margin-bottom: 20px;
+}
+
+h5.title-dethi {
+    margin-bottom: 20px;
+}
+
+.bang-ketqua td {
+    border: 1px solid;
+}
+
+table.bang-ketqua tr {
+    width: 50px;
+    height: 20px;
+    border: 1px solid gray;
+}
+
+table.bang-ketqua {
+    box-sizing: border-box;
+    border: 2px solid;
+    width: 250px;
+    text-align: center;
+}
+
+table.bang-ketqua th {
+    width: 33px;
+    background: #4d733a;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 100;
+    border: 1px solid black;
+}
+
+ul.chitiet-ketquathi li {
+    height: 30px;
+}
+
+.phai {width: 90%;height: 100%;padding-left: 45%;}
+
+.trai {
+}
+
+ul.chitiet-dethi li {
+    height: 30px;
+}
+
+ul.chitiet-dethi {
+}
+
+table.thong-tin {
+    margin: 20px 0px 30px 0px;
+}
+
+.noidung .thong-tin tr {height: 30px;}
+
+.noidung .thong-tin td {
+    width: 160px;
+}
+
+.noidung .thong-tin td:nth-child(2) {
+    font-weight: bold;
+}
+
+h4.title {
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+}
+
+.dethi {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 60px;
+}
+
+.noidung {
+    width: 600px;
+    font-family: sans-serif;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.trai {
+    width: 35%;
+    height: 100%;
+    float: left;
+    border: 2px solid;
+    border-radius: 50%;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}*{
+	margin:0;
+	padding: 0;
+}
+
+.ketquathi {
+    height: 200px;
+}
+
+h5.title-ketquathi {
+    margin-bottom: 20px;
+}
+
+h5.title-dethi {
+    margin-bottom: 20px;
+}
+
+.bang-ketqua td {
+    border: 1px solid;
+}
+
+table.bang-ketqua tr {
+    width: 50px;
+    height: 20px;
+    border: 1px solid gray;
+}
+
+table.bang-ketqua {
+    box-sizing: border-box;
+    border: 2px solid;
+    width: 250px;
+    text-align: center;
+}
+
+table.bang-ketqua th {
+    width: 33px;
+    background: #4d733a;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 100;
+    border: 1px solid black;
+}
+
+ul.chitiet-ketquathi li {
+    height: 30px;
+}
+
+.phai {width: 80%;height: 100%;padding-left: 45%;}
+
+.trai {
+}
+
+ul.chitiet-dethi li {
+    height: 30px;
+}
+
+ul.chitiet-dethi {
+}
+
+table.thong-tin {
+    margin: 20px 0px 30px 0px;
+}
+
+.noidung .thong-tin tr {height: 30px;}
+
+.noidung .thong-tin td {
+    width: 160px;
+}
+
+.noidung .thong-tin td:nth-child(2) {
+    font-weight: bold;
+}
+
+h4.title {
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+}
+
+.dethi {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 60px;
+}
+
+.noidung {
+    width: 600px;
+    font-family: sans-serif;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.trai {
+    width: 35%;
+    height: 100%;
+    float: left;
+    border: 2px solid;
+    border-radius: 50%;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    width:100%;
+}

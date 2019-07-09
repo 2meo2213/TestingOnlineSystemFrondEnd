@@ -1,0 +1,186 @@
+.event-icon h4 {
+    font-size: 11px !important;
+    background: #009CDE;
+    color: #ffffff;
+    padding: 6px 4px;
+    text-align: center;
+    margin-bottom: 19px;
+    font-weight: bold;
+    margin-top: 0px;
+
+   
+}
+
+.event-icon h4 span {
+    background-image: url(https://learn.cmc.com.vn/root/ThemeSP/images/Profile/arrow-exam.png);
+    position: absolute;
+    bottom: -25px;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+  left:0;
+}
+
+.list-exam .exam-title {
+    width: 100%;
+    font-weight: 500;
+    font-size: 14px;
+    min-height: 43px;
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.event-icon {
+  
+    border: 1px solid #dfdfdf;
+   
+}
+h1{
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 25px;
+    text-transform: uppercase;
+    color: #999999;
+    font-weight: 600;
+    padding-top: 13px;
+    color: inherit;
+}
+.pointer
+ {cursor: pointer;}
+
+ //@at-root
+
+
+ h1{
+	
+	position:absolute;
+	top:97%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	text-align:center;
+	margin:0;
+	padding:0;
+	color:#009CDE;
+	font-family:"Comic Sans MS", cursive, sans-serif;
+	/*chu hoa*/
+	text-transform:uppercase;
+	border-bottom:8px solid #999999;
+	width:100%;
+	box-shadow:0 10px 10px rgba(0,0,0,.2);
+	
+	
+	
+	
+}
+h1 span{
+	position:relative;
+	display:inline-block;
+	animation:animate 1.5s linear infinite;
+	
+}
+h1 span:before{
+	content:'';
+	position:absolute;
+	bottom:0;
+	width:100%;
+	height:4px;
+	background:#999999;
+	animation:spanBoder  1.5s linear infinite;
+	
+}
+h1 span{
+	margin-left: 5px;
+}
+
+h1 span:nth-child(1),
+h1 span:nth-child(1):before{
+	animation-delay:0s;
+}
+h1 span:nth-child(2)
+,
+h1 span:nth-child(2):before{
+	animation-delay:0.2s;
+}
+h1 span:nth-child(3),
+h1 span:nth-child(3):before{
+	animation-delay:0.4s;
+}
+h1 span:nth-child(4),
+h1 span:nth-child(4):before{
+	animation-delay:0.6s;
+}
+h1 span:nth-child(5),
+h1 span:nth-child(5):before{
+	animation-delay:0.8s;
+}
+h1 span:nth-child(6),
+h1 span:nth-child(6):before{
+	animation-delay:1s;
+}
+@keyframes animate{
+	0%{
+		transform:translateY(0px);
+	}
+	10%{
+		transform:translateY(-30px);
+	}
+	15%{
+		transform:translateY(0px);
+	}
+	25%{
+		transform:translateY(-20px);
+	}
+	30%{
+		transform:translateY(0px);
+	}
+	40%{
+		transform:translateY(-10px);
+	}
+	45%{
+		transform:translateY(0px);
+	}
+	100%{
+		transform:translateY(0px);
+	}
+}
+
+@keyframes spanBoder{
+	0%{
+		
+		height:4px;
+		bottom:0;
+	}
+	10%{
+			height:-34px;
+		bottom:-30px;
+		
+	}
+	15%{
+		height:4px;
+		bottom:0;
+		
+	}
+	25%{
+		height:24px;
+		bottom:-20px;
+	}
+	30%{
+		height:4px;
+		bottom:0;
+	}
+	40%{
+		height:14px;
+		bottom:-10px;
+	}
+	45%{
+		height:4px;
+		bottom:0;
+	}
+	100%{
+		height:4px;
+		bottom:0;
+	}
+}
+

@@ -1,0 +1,123 @@
+<!-- =========================================================== -->
+<div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+          <div>
+            
+              <div class="col-md-12 ">
+                  
+                      <div class="col-md-12 ">
+                          <div class="col-md-6">
+            
+                          </div>
+                           
+                        </div>
+                  
+                <div class="col-md-12">
+                    <mat-accordion>
+                        <mat-expansion-panel>
+                          <mat-expansion-panel-header>
+                            <mat-panel-description>
+                              Click to open Filter
+                            </mat-panel-description>
+                          </mat-expansion-panel-header>
+            
+                          <form novalidate (ngSubmit)="onFilter()" >
+                            <div class="col-md-12">
+                              <mat-form-field class="col-md-5">
+                                <input matInput [matDatepicker]="picker" placeholder="Choose start date"
+                                  >
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                              </mat-form-field>
+            
+                              <mat-form-field class="col-md-5">
+                                <input matInput [matDatepicker]="picker2" placeholder="Choose end date" >
+                                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                <mat-datepicker #picker2></mat-datepicker>
+                              </mat-form-field>
+            
+                              <button type="submit" mat-raised-button style="color: white;background-color: #3f51b5;" class="col-md-1">Filter</button>
+                            </div>
+                          </form>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                          <p>I'm visible because I am open</p>
+                        </mat-expansion-panel>
+                      </mat-accordion>
+                </div>
+              </div>
+            </div>
+            <div class="container col-md-12" style="text-align: center; margin-top: 0%;">
+              <h2>List Test
+                <!-- <button (click)="RemoveSelectedRows()" style="float: right" mat-raised-button color="warn">Delete</button> -->
+              </h2>
+            </div>
+            <div>
+              <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+                <!-- Checkbox Column -->
+                <ng-container matColumnDef="select">
+                  <th mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox 
+                      [checked]=""
+                      [indeterminate]=""
+                      (change)="$event ? MasterToggle() : null">
+                    </mat-checkbox>
+                  </th>
+                  <td mat-cell *matCellDef="let row">
+                    <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row):null"
+                      [checked]="selection.isSelected(row)" [aria-label]="CheckBoxLabel(row)">
+                    </mat-checkbox>
+                  </td>
+                </ng-container>
+      
+                <!-- Position Column -->
+                <ng-container matColumnDef="Id">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                  <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+                </ng-container>
+      
+                <!-- Name Column -->
+                <ng-container matColumnDef="TestName">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Test Name</th>
+                  <td mat-cell *matCellDef="let element"> {{element.TestName}} </td>
+                </ng-container>
+      
+                <!-- Weight Column -->
+                <ng-container matColumnDef="Status">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                  <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
+                </ng-container>
+      
+                <ng-container matColumnDef="TestTime">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Thời gian thi</th>
+                  <td mat-cell *matCellDef="let element"> {{element.TestTime}} </td>
+                </ng-container>
+      
+                <ng-container matColumnDef="NumberTime">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Số lần thi</th>
+                  <td mat-cell *matCellDef="let element"> {{element.TotalTest}} </td>
+                </ng-container>
+      
+                
+                 <ng-container matColumnDef="Action">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
+                        <td mat-cell *matCellDef="let element"> <button class="btn btn-info">Test</button> </td>
+                </ng-container> 
+               
+      
+                <tr mat-header-row *matHeaderRowDef="displayedColumn"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumn;"></tr>
+              </table>
+              <mat-paginator [pageSizeOptions]="[1, 10, 15]" showFirstLastButtons></mat-paginator>
+            </div>
+          
+          <div>
+            <!-- Modal -->
+            
+      
+             
+          </div>
+        </section>
+        <!-- /.content -->
+      </div>

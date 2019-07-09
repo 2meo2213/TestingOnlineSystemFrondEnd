@@ -1,0 +1,137 @@
+<form novalidate [formGroup]="ctForm" class="row justify-content-md-center">
+    <h3 style="margin-left: 55%;">Create Question</h3>
+  
+    <button style="margin-left: 80%;" type=" button" class="btn btn-danger"><a routerLink="/question">Back Home</a></button>
+    <br>
+    <br>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-3">
+      <table class="table ">
+        <tbody>
+          <tr>
+            <td>Category</td>
+            <td >
+              <fieldset formGroupName="Category">
+              <select style="width: 267px;height: 40px;"
+                formControlName="Id" >
+                <option value="0" *ngFor="let item of categoriesFormApi" value="{{item.Id}}">{{item.Name}}</option>  
+              </select>
+            </fieldset>
+            </td>
+            <td>Suggestion</td>
+            <td>
+              <textarea formControlName="Suggestion" style="width:267px;"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td>Question type</td>
+            <td><select class="selectpicker" data-live-search="true" style="width: 267px;height: 40px;"
+                formControlName="QuestionType" selected-value="1">
+                <option value="1" selected selected="true" data-tokens="ketchup mustard">Multiple choice</option>
+                <option value="2" data-tokens="mustard">Essay</option>
+              </select>
+             
+            </td>
+          
+          </tr>
+          <tr>
+            <td>Level</td>
+            <td><select class="selectpicker" data-live-search="true" style="width: 267px;height: 40px;"
+                formControlName="Level">
+                <option value="1" data-tokens="ketchup mustard">Easy</option>
+                <option value="2" data-tokens="mustard">Medium</option>
+                <option value="3" data-tokens="frosting">Difficult</option>
+              </select>
+              <div *ngIf="Level.invalid && Level.touched" >
+                <div class="alert alert-danger " role="alert">
+                  <span *ngIf="Level.hasError('required')" >
+                    Level is required
+                  </span>
+                </div>
+              </div>
+            </td>
+            <td>Tags</td>
+            <td>
+              <select class="selectpicker" data-live-search="true" style="width: 267px;height: 60px;"
+                formControlName="TagId" multiple >
+                
+                <option *ngFor="let item of tagsFormApi" value="{{item.Id}}" data-tokens="ketchup mustard">{{item.Name}}</option>              
+              </select>
+            </td>
+          </tr>
+        <tbody>
+      </table>
+      <div class="row">
+        <div class="col-md-2 ">
+          <p>Content</p>
+        </div>
+        <div class="col-md-10" style="margin-left: -23px; width: 703px!important;">
+          <input formControlName="Content" (change)="onChange($event)"  id="creater-question" name="classic-editor" />  
+            <!-- <ckeditor formControlName="Content" id="creater-question" [editor]="Editor" id="classic-editor" name="classic-editor">
+                </ckeditor> -->
+        </div>
+        <br><br><br><br><br>
+              <div *ngIf="Content.invalid && Content.touched">
+          <div class="alert alert-danger" role="alert">
+            <span *ngIf="Content.hasError('required')">
+              Content is required
+            </span>
+          </div>
+        </div>
+      </div>
+      <h3 style="margin-left: 45%;">Answer List</h3>
+      <br>
+
+      <br>
+      <br>
+  
+      <div formArrayName="Answers" *ngFor="let item of ctForm.get('Answers').controls; let i = index;" style="margin-right: 60px; margin-left: -17px;">
+        <div [formGroupName]="i">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td style="width: 100px">Status</td>
+                <td>
+                  <select formControlName="Status" class="selectpicker" data-live-search="true"
+                    style="width: 267px;height: 40px;">
+                    <option value="1" data-tokens="ketchup mustard">Active</option>
+                    <option value="2" data-tokens="mustard">disable</option>
+                  </select>
+                </td>
+                <td style="padding-top: 19px;">isTrue</td>
+                <td>
+                  <label class="checkbox-inline">
+                    <input formControlName="IsTrue" type="checkbox">
+                  </label>
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+            <tr>
+              <td ><p style="margin-right:64px;">Content</p></td>
+              <td colspan="4">
+                <!-- <input formControlName="Content"  id="editor-question" name="classic-editor" />   -->
+                <ckeditor formControlName="Content" [editor]="Editor" name="classic-editor">
+                </ckeditor>
+                
+              </td>
+              <td><button style="margin-left: 45%;" type=" button" class="btn btn-danger"
+                (click)="removeAnswer(i)">Delete</button>
+              </td>
+            </tr>
+            </table>       
+          <br>
+          <br>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-5"><button type="button" (click)="addAnswer()" class="btn btn-success" >Add
+          Answer</button> </div>
+      <div class="col-md-1"><a ><button type="button" (click)="saveQuestion()" class="btn btn-primary" >Save Question</button></a></div>
+  
+    </div>
+  </div>
+  </form>
+  <!-- <p>value form</p>
+  <pre>{{form.value|json}}</pre> -->

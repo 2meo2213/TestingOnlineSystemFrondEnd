@@ -1,0 +1,135 @@
+<div class="navbar navbar-inverse navbar-fixed-top opaque-navbar" *ngIf="!currentUser" style="height: 52px">
+  <div class="container-fluid">
+    <div class="navbar-header logo" style="line-height: 45px">
+      <a [routerLink]="['']" routerLinkActive="active"><img src="../../assets/image/logo_vn_white.png"
+          height="35px" /></a>
+    </div>
+    <div *ngIf="UserName; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+      <ul class="nav navbar-nav pull-right" style="margin-right: 5%">
+          <li ><a routerLink="/group"><i class="fa fa-lock"></i>Admin Manager</a></li>
+
+
+          <li>
+              <a class="btn" [routerLink]="['']" routerLinkActive="active"><span><i class="fa fa-home"></i></span>Home</a>
+            </li>
+        <li class="pointer"><a (click)="Logout()">
+            <i class="fa fa-sign-out"></i>Sign out</a></li>
+
+        <li>
+          <a class="btn" routerLinkActive="active"><span><i class="fa fa-user fa-fw"></i></span>{{UserName}}</a>
+        </li>
+      </ul>
+    </ng-template>
+    <ng-template #elseBlock>
+      <ul class="nav navbar-nav pull-right" style="margin-right: 5%">
+
+        <li><a>Register</a></li>
+        <li>
+          <a class="btn" [routerLink]="['login']" routerLinkActive="active"><span><i
+                class="fa fa-user fa-fw"></i></span>Sign In</a>
+        </li>
+      </ul>
+    </ng-template>
+
+    <ul class="nav navbar-nav pull-right">
+
+
+     
+    </ul>
+
+
+
+  </div>
+</div>
+<div *ngIf="notify; then thenBlock else elseBlock">
+</div>
+<ng-template #thenBlock>
+  <div class="container">
+    <div class="alert alert-warning" style="margin-top: 3%;">
+      <strong></strong> <a href="#" class="alert-link">Không có bài thi nào!</a>.
+    </div>
+  </div>
+
+
+</ng-template>
+<ng-template #elseBlock>
+  <div style="margin-top: 80px"> <span style="font-size: 23px;color: #999999;font-weight: 600; margin-left: 155px">View
+      List Bài Thi </span>
+
+
+  </div>
+  <div class="content-master-hot bxslider" *ngFor="let st of semester" style=" margin-left: 155px;
+
+flex-wrap: wrap;
+">
+
+
+
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 box-info-home"
+      style="margin-top:  10px;margin-right: 15px; background: rgb(240,240,240);">
+
+      <div class="list-exam" data-toggle="tooltip" data-placement="top" title=""
+        data-original-title="Exam_Technical_BTNB_Final_18_01">
+        <div class="col-md-3 no-padding " style="margin-top: 0">
+          <div class="event-icon">
+            <h4>
+              <b>
+                {{st.StartDate| date:'MM'}}
+              </b>
+              <span></span>
+            </h4>
+            <p class="exam-calendar-date text-center">
+              <b>{{st.StartDate| date:'dd'}}</b>
+            </p>
+
+          </div>
+        </div>
+        <div class="col-md-9 col-xs-9 margin-top-10 padding-left-15 pull-left" style="overflow: hidden">
+          <a routerLink="/DetailExamCustomer/{{st.Id}}">
+            <span class="exam-title" style="text-transform: uppercase">
+              {{st.TestName}}
+              <br>
+              <h6>{{st.SemesterExam.SemesterName}}</h6>
+
+            </span>
+
+
+          </a>
+
+          <div class="box-label-exam">
+            <div class="col-md-12 col-xs-12 no-padding">
+              <span>Đăng ký tự do</span>
+            </div>
+            <div class="hidden-sm no-padding margin-top-5">
+              <p class="col-md-6 col-xs-6 no-padding">
+                <i class="fa fa-calendar"></i>
+                {{st.StartDate| date:'dd/MM/yyyy'}}
+              </p>
+              <p class="col-md-6 col-xs-6 no-padding  padding-left-20 pull-left">
+                <i class="fa fa-calendar"></i>
+                {{st.EndDate| date:'dd/MM/yyyy'}}
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ng-template>
+
+<h1>
+  <span>Hướng</span>
+
+  <span>tới </span>
+
+  <span>tương </span>
+
+  <span>lai </span>
+
+  <span>số </span>
+
+  <span>! </span>
+</h1>

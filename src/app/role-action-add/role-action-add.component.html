@@ -1,0 +1,32 @@
+<div class="content-wrapper" style="padding-top: 2%">
+
+  <button (click)="clickToGoBack()" type="submit" style="margin-left: 73.1%;margin-bottom: 5px;" class="btn btn-danger">Go Back</button>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <!-- ActionName Column -->
+      <ng-container matColumnDef="ActionName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.ActionName}} </td>
+      </ng-container>
+
+      <!-- Description Column -->
+      <ng-container matColumnDef="Description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <td mat-cell *matCellDef="let element"><span data-placement="top" data-toggle="tooltip" title="Add"><button
+              type="button" (click)="AddActionToRole(element.ActionId)" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-plus-sign"></span>
+            </button></span></td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumn"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumn;"></tr>
+
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>

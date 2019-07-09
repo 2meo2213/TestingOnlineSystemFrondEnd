@@ -1,0 +1,79 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+@import "assets/bower_components/bootstrap/dist/css/bootstrap.min.css";
+
+@import "assets/bower_components/font-awesome/css/font-awesome.min.css";
+
+@import "assets/bower_components/Ionicons/css/ionicons.min.css";
+@import "assets/dist/css/AdminLTE.min.css";
+
+@import "assets/dist/css/skins/_all-skins.min.css";
+@import "assets/bower_components/morris.js/morris.css";
+@import "assets/bower_components/jvectormap/jquery-jvectormap.css";
+@import "assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css";
+@import "assets/bower_components/bootstrap-daterangepicker/daterangepicker.css";
+@import "assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~ngx-toastr/toastr-bs4-alert';
+
+body { 
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+}
+
+.basic-container {
+  padding: 30px;
+}
+
+.version-info {
+  font-size: 8pt;
+  float: right;
+}
+// @import "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic";
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+// @import "~bootstrap/scss/functions";
+// @import "~bootstrap/scss/variables";
+// @import "~bootstrap/scss/mixins";
+// @import "~bootstrap/scss/root";
+// @import "~bootstrap/scss/reboot";
+// @import "~bootstrap/scss/type";
+// @import "~bootstrap/scss/images";
+// @import "~bootstrap/scss/code";
+// @import "~bootstrap/scss/grid";
+// @import "~bootstrap/scss/tables";
+// @import "~bootstrap/scss/forms";
+// @import "~bootstrap/scss/buttons";
+// @import "~bootstrap/scss/transitions";
+// @import "~bootstrap/scss/dropdown";
+// @import "~bootstrap/scss/button-group";
+// @import "~bootstrap/scss/input-group";
+// @import "~bootstrap/scss/custom-forms";
+// @import "~bootstrap/scss/nav";
+// @import "~bootstrap/scss/navbar";
+// @import "~bootstrap/scss/card";
+// @import "~bootstrap/scss/breadcrumb";
+// @import "~bootstrap/scss/pagination";
+// @import "~bootstrap/scss/badge";
+// @import "~bootstrap/scss/jumbotron";
+// @import "~bootstrap/scss/alert";
+// @import "~bootstrap/scss/progress";
+// @import "~bootstrap/scss/media";
+// @import "~bootstrap/scss/list-group";
+// @import "~bootstrap/scss/close";
+// // @import "~bootstrap/scss/toasts";
+// @import "~bootstrap/scss/modal";
+// @import "~bootstrap/scss/tooltip";
+// @import "~bootstrap/scss/popover";
+// @import "~bootstrap/scss/carousel";
+// @import "~bootstrap/scss/spinners";
+// @import "~bootstrap/scss/utilities";
+// @import "~bootstrap/scss/print";

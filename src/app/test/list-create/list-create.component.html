@@ -1,0 +1,199 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- <section class="content-header">
+      <h1>
+        Dashboard
+        <small>Control panel</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+      </ol>
+    
+    </section> -->
+  
+    <!-- Main content -->
+    <section class="content">
+      <!-- Small boxes (Stat box) -->
+      
+      <!-- /.row -->
+      <!-- Main row -->
+      <div class="row">
+        <!-- Left col -->
+        
+        <!-- /.Left col -->
+        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+      
+  
+          <div class="container-fluid "> 
+           
+          
+<div class="header clearfix">
+      <a class="btn btn-danger" href="" style="float: right;" routerLink="/test">Go Back</a>
+   
+  </div>
+  <div class="content">
+  <h1 style="margin-left: 45%;">Create Test</h1>
+  <form novalidate (ngSubmit)="onSubmit()" [formGroup]="form" style="margin-bottom: 0px;" >
+  <div class="formTest ">
+      <div class="col-md-6">
+          <div class="form-group row">
+              <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Exam</label>
+              <div class="col-sm-10">
+                <select name="" id="" class="form-control form-control-sm" formControlName="ExamId">
+                 
+                  <option *ngFor="let item of exams" value="{{item.Id}}">{{item.NameExam}}</option>
+                </select>
+              </div>
+            </div>
+         
+                  <div *ngIf="!exam.valid && exam.touched "  style="color: red">
+                      <div *ngIf="exam.hasError('required')">
+                        exam must be not null
+                      </div>
+                      
+                    </div>
+                    <div class="form-group row">
+                        <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Semaster</label>
+                        <div class="col-sm-10">
+                          <select  class="form-control form-control-sm" formControlName="SemasterExamId">
+                            <option *ngFor="let item of semasters" value="{{item.ID}}">{{item.SemesterName}}</option>
+                           
+                          </select>
+                        </div>
+                      </div>
+                 
+                      <div *ngIf="!Semaster.valid && Semaster.touched " style="color: red">
+                          <div *ngIf="Semaster.hasError('required')">
+                            Semaster must be not null
+                          </div>
+                          
+                    
+                        </div>
+                        <div class="form-group row">
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">TestName</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control form-control-sm" [maxLength]=50 formControlName="TestName">
+                              
+                            </div>
+                          </div>
+                       
+                          <div *ngIf="!name.valid && name.touched " style="color: red">
+                              <div *ngIf="name.hasError('required')">
+                                Test name must be not null
+                              </div>
+                              <div *ngIf="name.hasError('maxlength')">
+                                Test name is not  50 characters
+                              </div>
+                        
+                            </div>
+                            
+                              <div class="form-group row">
+                                  <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">TestTime</label>
+                                  <div class="col-sm-10">
+                                      <input type="text" class="form-control form-control-sm" [pattern]="regPassScore" formControlName="TestTime">
+                                    
+                                  </div>
+                                </div>
+                             
+                              <div *ngIf="!TestTime.valid && TestTime.touched " style="color: red">
+                                  <div *ngIf="TestTime.hasError('required')">
+                                     test time must be not null
+                                  </div>
+                                  <div *ngIf="TestTime.hasError('pattern')">
+                                    test time is not fommal
+                                 </div>
+                            
+                                </div>
+                           
+      </div>
+      <div class="col-md-6">
+          
+            
+                <div class="form-group row">
+                    <label for="colFormLabelSm"  class="col-sm-2 col-form-label col-form-label-sm">CreateBy</label>
+                    <div class="col-sm-10">
+                        <input type="text" value={{UserName}} [readonly]=true class="form-control form-control-sm" formControlName="CreateBy">
+                      
+                    </div>
+                  </div>
+           
+                  <div *ngIf="!CreateBy.valid && CreateBy.touched " style="color: red">
+                      <div *ngIf="CreateBy.hasError('required')">
+                        Create By must be not null
+                      </div>
+                      
+                    </div>
+                    <div class="form-group row">
+                        <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">PassScore</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control form-control-sm" [pattern]="regPassScore" formControlName="PassScore">
+                          
+                        </div>
+                      </div>
+                    
+                      <div *ngIf="!PassScore.valid && PassScore.touched " style="color: red">
+                          <div *ngIf="PassScore.hasError('required')">
+                            Pass Score must be not null
+                          </div>
+                          <div *ngIf="PassScore.hasError('pattern')">
+                            Pass Score is not formmal
+                          </div>
+                    
+                        </div>
+                        <div class="form-group row">
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">TotalTest</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control form-control-sm" formControlName="TotalTest" [pattern]="regTotal">
+                              
+                            </div>
+                          </div>
+                      
+                        <div *ngIf="!TotalTest.valid && name.touched   " style="color: red">
+                            <div *ngIf="TotalTest.hasError('required')">
+                              number time must be not null
+                            </div>
+                            <div *ngIf="TotalTest.hasError('pattern')">
+                             total test is not fommal
+                            </div>
+                      
+                          </div>
+                         
+                            <div class="form-group row">
+                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Status</label>
+                                <div class="col-sm-10">
+                                  <select name="" id="" class="form-control form-control-sm" formControlName="Status">
+                                    <option value="0">drak</option>
+                                    <option value="1">public</option>
+                                  </select>
+                                </div>
+                              </div>
+        
+          <div *ngIf="!status.valid && status.touched " style="color: red">
+              <div *ngIf="status.hasError('required')">
+                Status must be not null
+              </div>
+              
+        
+            </div>
+      </div>
+      <button type="submit" (click)="validateForm()" mat-flat-button color="primary">Save</button>
+      </div>
+    </form>
+  </div>
+  
+  
+          
+          </div>
+          
+        
+   
+        <!-- right col -->
+      </div>
+      <!-- /.row (main row) -->
+  
+    </section>
+    <!-- /.content -->
+  </div>
+  
+  

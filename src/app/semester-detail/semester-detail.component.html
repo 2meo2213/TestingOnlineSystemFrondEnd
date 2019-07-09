@@ -1,0 +1,177 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<h2 style="margin-left: 54%;margin-top: 80px;font-size: 42px">THÔNG TIN KÌ THI</h2>
+<br><br>
+<div class="row col-md-12" style="margin-left: 18%">
+    <!-- <div class="col-md-3"></div> -->
+    <div class="container" style="width: 80%">
+        <div class="row">
+            <div class="col-sm-3 col-md-3">
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion"><span
+                                        class="glyphicon glyphicon-folder-close">
+                                    </span>Danh sách bài thi</a>
+                            </h4>
+                        </div>
+
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion"
+                                    [routerLink]="['/SemesterExamManager/detail','ListThiSinh']"><span
+                                        class="glyphicon glyphicon-th">
+                                    </span>Danh sách đề thi</a>
+                            </h4>
+                        </div>
+
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span
+                                        class="glyphicon glyphicon-user">
+                                    </span>Báo cáo</a>
+                            </h4>
+                        </div>
+
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span
+                                        class="glyphicon glyphicon-file">
+                                    </span>Danh Sách thí sinh</a>
+                            </h4>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-7" style="border: black 1px">
+
+                <form (ngSubmit)="navigateToEdit()" class="form-group" [formGroup]="formApply">
+
+
+
+                    <table>
+
+                        <tr>
+                            <td><label>Tên kì thi</label></td>
+
+                            <td>
+                                <mat-form-field class="example-full-width">
+                                    <input matInput formControlName="SemesterName">
+                                </mat-form-field>
+                                <div style="color: red" *ngIf="!SemesterName.valid && SemesterName.touched">
+                                    <div *ngIf="SemesterName.hasError('required')">
+                                        Name required
+                                    </div>
+                                    <div *ngIf="SemesterName.hasError('minlength')">
+                                        Minlength {{SemesterName.getError('minlength').requiredLength}}
+                                    </div>
+                                </div>
+
+
+                            </td>
+
+
+                        </tr>
+                        <!-- <tr>
+                            <td><label>Người tạo</label></td>
+                            <td>{{list.Creator}}</td>
+                        </tr> -->
+                        <tr>
+                            <td><label>Trạng thái</label></td>
+                            <td>
+
+
+                                <mat-form-field>
+
+                                    <select matNativeControl required formControlName="status">
+                                        <option value="Public">Public</option>
+                                        <option value="Done">Done</option>
+                                        <option value="Draft">Draft</option>
+
+                                    </select>
+                                </mat-form-field>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td><label>Thời gian thi</label></td>
+                            <td>
+                                <mat-form-field>
+                                    <input matInput placeholder="{{list.StartDay}}" [(ngModel)]="dateTime"
+                                        [owlDateTime]="dt2" formControlName="StartDay">
+
+                                </mat-form-field>
+
+                                <!-- <div class="magin">
+
+                                    <input type="date" name="date" formControlName="StartDay">
+                                </div> -->
+
+
+                            </td>
+                            <td>
+                                <span class="example-trigger" [owlDateTimeTrigger]="dt2">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </span>
+                                <owl-date-time #dt2></owl-date-time>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>Thời gian kết thúc</label></td>
+                            <td>
+                                <mat-form-field (blur)="compareTwoDates()">
+                                    <input matInput placeholder="{{list.EndDay}}" [(ngModel)]="dateTime1"
+                                        [owlDateTime]="dt3" formControlName="EndDay" (blur)="compareTwoDates()">
+                                </mat-form-field>
+                                <!-- 
+                                <div class="magin">
+
+                                    <input type="date" name="date" formControlName="EndDay" (blur)="compareTwoDates()">
+                                </div>
+                                <div style=" color: red" *ngIf="error.isError">
+                                    {{ error.errorMessage }}
+                                </div> -->
+                    
+                            <div style=" color: red" *ngIf="error.isError">
+                                {{ error.errorMessage }}
+                            </div>
+                            </td>
+                            <td>
+                                <span class="example-trigger" [owlDateTimeTrigger]="dt3">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </span>
+                                <owl-date-time #dt3></owl-date-time>
+                            </td>
+
+
+                        <tr>
+                            <td><label>Số người tham gia :</label></td>
+                            <td><label>{{list.NumberInvite}}</label></td>
+                        </tr>
+
+                        <tr>
+                            <td> <button type="button" (click)="GenerateCode()" class="taoma col-md-4">Tạo mã
+                                    thi</button></td>
+                            <td>
+                                <mat-form-field class="example-full-width">
+                                    <input disabled matInput value="{{list.Code}}">
+                                </mat-form-field>
+
+                            </td>
+                        </tr>
+                    </table>
+
+                    <button type="submit" class="apply" (click)="submit()"> Apply</button>
+
+                </form>
+            </div>
+        </div>

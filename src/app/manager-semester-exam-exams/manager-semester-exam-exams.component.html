@@ -1,0 +1,233 @@
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <title></title>
+  </head>
+  
+  <body>
+    
+      
+    <div class= "col-md-12" style="margin-left: 18%">
+        <h2 style="color: black;margin-left:30%">Danh Sách Đề Thi</h2>
+        <br>
+        <br>
+      <div class="col-md-2">
+          <ul class="nav .flex-column nav-tabs col-md-12">
+
+              <li class="nav-item col-md-12 bg bg-info">
+                <a [routerLink]="['/SemesterExamManager/detail',Id]" class="nav-link" href="#"> <span
+                    style="color: black">Thông tin kì thi</span></a>
+              </li>
+              <li class="nav-item col-md-12 bg bg-info">
+                <a [routerLink]="['/SemesterExamManager/exams',Id] " class=" nav-link" href="#">Danh sách đề thi</a>
+              </li>
+              <li class="nav-item col-md-12 bg bg-info">
+                <a class="nav-link" href="#">Danh sách bài thi</a>
+              </li>
+              <li class="nav-item col-md-12 bg bg-info">
+                <a class="nav-link disabled" href="#" [routerLink]="['/SemesterExamManager/Report',Id]">Báo cáo </a>
+              </li>
+              <li class="nav-item col-md-12 bg bg-info">
+                <a [routerLink]="['/SemesterExamManager/Thisinh',Id]" class="nav-link disabled" href="#">Danh Sách
+                  thí sinh </a>
+              </li>
+      
+      
+            </ul>
+      </div>
+      <div class="col-md-6">
+          <div class="container col-md-12">
+              <div style="padding: 10px;">
+                <input [(ngModel)]="searchString"  style="color :black"(keyup.enter)="onSearch()"type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+                <!-- <div class="container col-md-12">
+                  <span data-placement="top" data-toggle="tooltip">
+                     <button class="btn btn-primary" data-title="Create" data-toggle="modal" data-target="#create"
+                      style="margin-left: 74%;margin-bottom: 5px;width: 90px;" id="Create" (click)=AddExam()>
+                      <span>Add</span>
+                    </button> 
+        
+                    <button style="float: right;width: 90px;" type="button" class="btn btn-danger">Delete</button> 
+                  </span>
+          
+                </div>  -->
+                <hr />
+              </div>
+              
+            </div>
+            
+            <div class="container col-md-12" style="text-align: center">
+          
+                <h2 style="margin-left:200px"> Danh sách đề thi
+                </h2>
+            
+              </div>
+              <div style="margin-top: 2%">
+                <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" style="width: 100%;margin: 15px 0px;">
+            
+                   <ng-container matColumnDef="select">
+                     <th mat-header-cell *matHeaderCellDef>
+                      <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+                      </mat-checkbox>
+                    </th> 
+                     <td mat-cell *matCellDef="let row">
+                      <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                      </mat-checkbox>
+                    </td> 
+                  </ng-container> 
+            
+                  <ng-container matColumnDef="Id" class="tr">
+                    <th mat-header-cell *matHeaderCellDef class="th"> ID </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+                  </ng-container>
+            
+            
+                  <ng-container matColumnDef="NameExam" class="tr">
+                    <th mat-header-cell *matHeaderCellDef class="th"> Tên đề thi </th>
+                    <td mat-cell *matCellDef="let element"> {{element.NameExam}} </td>
+                  </ng-container>
+            
+            
+                  <ng-container matColumnDef="CreateBy" class="tr">
+                    <th mat-header-cell *matHeaderCellDef class="th">Người tạo </th>
+                    <td mat-cell *matCellDef="let element"> {{element.CreatedBy}} </td>
+                  </ng-container>
+            
+            
+                  <ng-container matColumnDef="QuestionNumber" class="tr">
+                    <th mat-header-cell *matHeaderCellDef> Số câu hỏi </th>
+                    <td mat-cell *matCellDef="let element"> {{element.QuestionNumber}} </td>
+                  </ng-container>
+            
+                  <ng-container matColumnDef="Status" class="tr">
+                    <th mat-header-cell *matHeaderCellDef> Trạng thái </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
+                  </ng-container>
+            
+                   <!-- <ng-container matColumnDef="Status" class="tr">
+                    <th mat-header-cell *matHeaderCellDef> Status</th>
+                    <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
+                  </ng-container> -->
+            
+                  <!-- <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef> Action </th>
+                    <td mat-cell *matCellDef="let element">
+                      <button><i class="fas fa-clone"></i></button>
+                      <button><i class="fas fa-info-circle"></i></button>
+                      <button><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                  </ng-container> -->
+                   <tr mat-header-row *matHeaderRowDef="displayedColumn"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumn;"></tr> 
+                </table>
+            
+                <mat-paginator [pageSizeOptions]="[2,5]" showFirstLastButtons></mat-paginator>
+              </div>
+                
+                <!-- <div class="col-md-4">
+                        <input type="date" name="date" placeholder="StartDay">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="date" name="date" placeholder="EndDay">
+                    </div> -->
+              </div>
+              
+            </div>
+          
+            
+          
+     
+ 
+  </body>
+  <!-- Modal -->
+  <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="create" aria-hidden="true">
+    <div class="modal-dialog" style="width: 70%;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span
+              class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+              <input type="text" placeholder="Search.." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+        <!-- <button class="btn btn-primary" data-title="Create" data-toggle="modal" data-target="#create"
+              style="margin-left: 74%;margin-bottom: 5px;width: 90px;" id="Create" (click)=add()> add</button> -->
+          <h3 class="modal-title custom_align" id="Heading" style="text-align:center">Add Candidates</h3>
+  
+          
+  
+            
+            <table mat-table [dataSource]="dataSource2" matSort class="mat-elevation-z8" style="width: 100%;margin: 15px 0px;">
+              
+              <span>Add</span>
+                 <ng-container matColumnDef="select">
+                   <th mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+                    </mat-checkbox>
+                  </th> 
+                   <td mat-cell *matCellDef="let row">
+                    <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                      [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)" (click)="get(row)">
+                    </mat-checkbox>
+                  </td> 
+                </ng-container> 
+          
+                <ng-container matColumnDef="Id" class="tr">
+                  <th mat-header-cell *matHeaderCellDef class="th"> ID </th>
+                  <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+                </ng-container>
+          
+          
+                <ng-container matColumnDef="NameExam" class="tr">
+                  <th mat-header-cell *matHeaderCellDef class="th"> Tên đề thi </th>
+                  <td mat-cell *matCellDef="let element"> {{element.NameExam}} </td>
+                </ng-container>
+          
+          
+                <ng-container matColumnDef="CreateBy" class="tr">
+                  <th mat-header-cell *matHeaderCellDef class="th">Ngày tạo </th>
+                  <td mat-cell *matCellDef="let element"> {{element.CreatedBy}} </td>
+                </ng-container>
+          
+          
+                <ng-container matColumnDef="QuestionNumber" class="tr">
+                  <th mat-header-cell *matHeaderCellDef> Số câu hỏi </th>
+                  <td mat-cell *matCellDef="let element"> {{element.QuestionNumber}} </td>
+                </ng-container>
+          
+                <ng-container matColumnDef="Status" class="tr">
+                  <th mat-header-cell *matHeaderCellDef> Trạng thái </th>
+                  <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
+                </ng-container>
+          
+                 <!-- <ng-container matColumnDef="Status" class="tr">
+                  <th mat-header-cell *matHeaderCellDef> Status</th>
+                  <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
+                </ng-container> -->
+          
+                <!-- <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef> Action </th>
+                  <td mat-cell *matCellDef="let element">
+                    <button><i class="fas fa-clone"></i></button>
+                    <button><i class="fas fa-info-circle"></i></button>
+                    <button><i class="fas fa-trash-alt"></i></button>
+                  </td>
+                </ng-container> -->
+                 <tr mat-header-row *matHeaderRowDef="displayedColumn"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumn;"></tr> 
+                <mat-paginator [pageSizeOptions]="[5,5]" showFirstLastButtons></mat-paginator>
+              </table>
+            
+  
+      </div>
+    </div>
+  </div> 
+  

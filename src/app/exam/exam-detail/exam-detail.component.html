@@ -1,0 +1,295 @@
+<div style="height: 95vh;  overflow-y: scroll;  overflow-x: hidden;">
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+
+
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <!-- Small boxes (Stat box) -->
+
+    <!-- /.row -->
+    <!-- Main row -->
+    <div class="row">
+      <!-- Left col -->
+
+      <!-- /.Left col -->
+      <!-- right col (We are only adding the ID to make the widgets sortable)-->
+
+
+        <div class="container-fluid ">
+          <div class="clearfix">
+          <div class="col-md-5">
+              <input [(ngModel)]="searchString" type="text" placeholder="Search content">
+              <button (click)="onSearch()" type="submit"><i class="fa fa-search"></i></button>
+
+        </div>
+        <div class="col-md-7 header-right">
+        <button style="margin-right: 50px;" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Random</button>
+
+        <button  [routerLink]="['/exam']" class="btn btn-danger">Go Back</button>
+        </div>
+        </div>
+        <br>
+
+        <div class="filter clearfix" >
+          <form novalidate (ngSubmit)="onFilter()" [formGroup]="filterForm">
+            <div class="col-md-12">
+              <mat-accordion>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+
+                    <mat-panel-description>
+                      Cick Choice Type Filter
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+
+                  <mat-form-field class="col-md-4">
+                      <mat-label>---filter level---</mat-label>
+                    <mat-select formControlName="Level">
+
+                      <mat-option > ----- </mat-option>
+                      <mat-option *ngFor="let level of listfilter.ListLevel" value="{{ level }}">
+                        {{(level==1) ?"Easy":"medium"}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field class="col-md-4">
+                      <mat-label>---filter type---</mat-label>
+                      <mat-select formControlName="Type" >
+                        <mat-option > ----- </mat-option>
+                        <mat-option *ngFor="let type of listfilter.ListType" value={{type}}> {{(type==1)? "Essay":"mutiple choice"}}</mat-option>
+
+                      </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="col-md-4">
+                        <mat-label>---Create By---</mat-label>
+                        <mat-select formControlName="CreatedBy">
+                          <mat-option > ----- </mat-option>
+                            <mat-option *ngFor="let CreatedBy of listfilter.ListCreateBy" value="{{ CreatedBy }}">
+                            {{ CreatedBy }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <mat-form-field class="col-md-4">
+                        <mat-label>---Category---</mat-label>
+                        <mat-select formControlName="CategoryName">
+                          <mat-option > ----- </mat-option>
+                            <mat-option *ngFor="let CategoryName of listfilter.ListCategory" value="{{ CategoryName }}">
+                            {{ CategoryName }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+
+                    <!-- <ng-container matColumnDef="Action">
+                      <th mat-header-cell *matHeaderCellDef > Action </th>
+                      <td mat-cell *matCellDef="let element"> hÃ¡dhajshdgh </td>
+                    </ng-container> -->
+                          <div class="col-md-2">
+                            <button class="btn btn-primary">filter</button>
+                          </div>
+                </mat-expansion-panel>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+
+                  <p>I'm visible because I am open</p>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+          </form>
+
+
+
+        </div>
+        <!-- <button [routerLink]="['/exam/', examID]"  class="btn btn-info" data-dismiss="modal">Update
+          Question to Exam</button> -->
+          <button style="margin-left: 1.5%;margin-top:15px" [routerLink]="['/exam/examquestion', examID]" class="btn btn-primary" data-dismiss="modal">Detail Question in Exam
+            </button>
+
+                <div class="title">
+
+                    <div class="col-md-3">
+
+                    </div>
+                    <div class="col-md-6">
+                    <h1 style="text-align: center">List Question</h1>
+                      </div>
+                     <div class="col-md-3">
+                      <button class="btn btn-primary" (click)="AddMutiple()">Apply</button>
+                     </div>
+                    </div>
+                <table mat-table [dataSource]="dataSource" class="table table-hover" matSort>
+
+                    <!-- Checkbox Column -->
+                    <ng-container matColumnDef="select">
+                      <th mat-header-cell *matHeaderCellDef>
+                        <mat-checkbox (change)="$event ? masterToggle() : null"
+                                      [checked]="selection.hasValue() && isAllSelected()"
+                                      [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                      [aria-label]="checkboxLabel()">
+                        </mat-checkbox>
+                      </th>
+                      <td mat-cell *matCellDef="let row">
+                        <mat-checkbox (click)="$event.stopPropagation()"
+                                      (change)="$event ? selection.toggle(row) : null"
+                                      [checked]="selection.isSelected(row)"
+                                      [aria-label]="checkboxLabel(row)">
+                        </mat-checkbox>
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Id">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+                      <td mat-cell *matCellDef="let element"> {{element.QuesId}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Category">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Category Name </th>
+                      <td mat-cell *matCellDef="let element"> {{element.CategoryName}} </td>
+                    </ng-container>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="CreatedBy">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> CreateBy. </th>
+                      <td mat-cell *matCellDef="let element"> {{element.CreatedBy}} </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="CreatedDate">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> CreateDAte </th>
+                      <td mat-cell *matCellDef="let element"> {{element.CreatedDate|date}} </td>
+                    </ng-container>
+
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="Level">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Level </th>
+                      <td mat-cell *matCellDef="let element"> {{(element.Level==1) ?"Easy":"medium"}} </td>
+                    </ng-container>
+
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="Type">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+                      <td mat-cell *matCellDef="let element"> {{(element.Type==1)? "Essay":"mutiple choice"}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Content">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> content </th>
+                      <td mat-cell *matCellDef="let element">
+                        <p style="width: 100px;" class="content-question" [innerHtml]="element.Content"></p>
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Suggestion">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> sugestion </th>
+                      <td mat-cell *matCellDef="let element"> {{element.Suggestion}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="nameExam">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> nameExam </th>
+                      <td mat-cell *matCellDef="let element"> {{element.nameExam}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                        >
+                    </tr>
+                  </table>
+                  <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+
+
+        </div>
+
+
+
+      <!-- right col -->
+    </div>
+    <!-- /.row (main row) -->
+
+  </section>
+  <!-- /.content -->
+</div>
+
+
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <form novalidate (ngSubmit)="onSubmit()" [formGroup]="randomForm" >
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Please input number question  add to exam </h4>
+      </div>
+     
+      <div class="modal-body">
+        <!-- <input [(ngModel)]="numberQuestion" type="text" >
+        <button type="button" (click)="random()" class="btn btn-primary">
+          Submit
+        </button> -->
+        
+           <div class="formTest ">
+              <div class="">
+                  <div class="form-group row">
+                      <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Type Question</label>
+                      <div class="col-sm-10">
+                        <select  class="form-control form-control-sm"  formControlName="Type">
+
+                          <option  *ngFor="let level of listfilter.ListLevel" value="{{ level }}"> {{(level==1) ?"Easy":"medium"}}</option>
+                          <!-- <option >Medium</option>
+                          <option >Hard</option> -->
+                        </select>
+                      </div>
+                    </div>
+
+                          <div *ngIf="!TypeQuestion.valid && TypeQuestion.touched "  style="color: red">
+                              <div *ngIf="TypeQuestion.hasError('required')">
+                              Type  Question must be not null
+                              </div>
+
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Question Category</label>
+                                <div class="col-sm-10">
+                                  <select  class="form-control form-control-sm"   formControlName="CategoryName">
+                                    <option *ngFor="let category of listfilter.ListCategory" value="{{ category }}">{{category}}</option>
+
+                                  </select>
+                                </div>
+                              </div>
+
+                              <div *ngIf="!QuestionCategory.valid && QuestionCategory.touched " style="color: red">
+                                  <div *ngIf="QuestionCategory.hasError('required')">
+                                    Category must be not null
+                                  </div>
+
+
+                                </div>
+                                <div class="form-group row">
+                                  <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Random number</label>
+                                  <div class="col-sm-10"  >
+                                   <input style="width: 100%;" type="text" [pattern]="regTotal" formControlName="Total">
+                                  </div>
+                                </div>
+                                <div *ngIf="!RandomNumber.valid && RandomNumber.touched " style="color: red">
+                                  <div *ngIf="RandomNumber.hasError('required')">
+                                    random number must be not null
+                                  </div>
+                                  <div *ngIf="RandomNumber.hasError('pattern')">
+                                    random number is not fommal
+                                   </div>
+
+                                </div>
+
+                 </div>
+              
+              </div>
+            
+      </div>
+      <div class="modal-footer">
+          <button style="float:left" type="submit" (click)="validateForm()" mat-flat-button color="primary">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </form>
+  </div>
+</div>
+</div>

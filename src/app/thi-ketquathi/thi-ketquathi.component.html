@@ -1,0 +1,115 @@
+
+ <div *ngIf="UserName; then thenBlock else elseBlock"></div>
+<div class="navbar navbar-inverse navbar-fixed-top opaque-navbar" >
+  <div class="container-fluid" >
+    <div class="navbar-header logo" style="line-height: 45px">
+      <a [routerLink]="['']" routerLinkActive="active"><img src="../../assets/image/logo_vn_white.png"
+          height="35px" /></a>
+    </div>
+    <div *ngIf="UserName; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+       <ul  class="nav navbar-nav pull-right" style="margin-right: 5%">
+         
+      <li class="pointer"><a (click)="Logout()">
+          <i class="fa fa-sign-out"></i>
+        Sign out</a></li>
+      
+      <li>
+        <a class="btn"  routerLinkActive="active"><span><i
+              class="fa fa-user fa-fw"></i></span>{{UserName}}</a>
+      </li>
+    </ul>
+    </ng-template>
+  
+  </div>
+</div> 
+    <div class="warapper">
+        <div class="ketqua">
+            <h2>KẾT QUẢ THI</h2>
+            <form class="form-group" [formGroup]="formApply">
+
+           
+                <table class="information">
+                    <tr>
+                        <td>
+                            Tên bài thi:  
+                                
+                                    <label  >{{list.TestName}}</label>
+                           
+                        </td>
+                        <td class="td1">
+                            Tên kì thi:
+                            <label  >{{list.SemesterName}}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Tên thí sinh:   <label >{{list.FullName}}</label>
+                        </td>
+                        <td class="td1">
+                            Email:  <label  >{{list.Email}}</label>
+                        </td>
+                    </tr>
+    
+    
+                </table>
+                <table class="tb2" >
+           
+          
+                <tr>
+                    <td>Kết quả thi: </td>
+                    <td class="td2" >
+                            <!-- <div class="progress">
+                                    <div class="progress-bar"  role="progressbar" aria-valuenow="80"
+                                    aria-valuemin="0" aria-valuemax="100" style="width:50%">
+                                      {{list.Score*10}}%
+                                    </div>
+                                  </div> -->
+                                  <mat-progress-bar style="height: 20px" mode="determinate" value=" {{list.Score*10}}"></mat-progress-bar>
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <td>Lần 2: </td>
+                    <td class="td2">
+                            <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                    aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                                      70%
+                                    </div>
+                                  </div>
+                    </td>
+                </tr> -->
+            </table>
+            <table class="tb3">
+                <tr>
+                    <!-- <td>Lần thi</td> -->
+                   
+                    <td>Ðiểm thi</td>
+                    <td>Xếp loại</td>
+                    <td>Trạng thái</td>
+                </tr>
+                <tr>
+                    <!-- <td>1</td> -->
+                  
+                    <td>
+                            <label  >{{list.Score}}</label>
+                </td>
+                <td>
+                <label  >{{list.Category}}</label>
+                </td>
+                    <td>Ðã thi</td>
+                </tr>
+             
+            </table>
+        </form>
+        </div>
+   
+        <table class="tb4">
+            <tr>
+                <!-- <td><button type="submit" class="apply"> Thi lại</button></td> -->
+                <td class="quaylai"><button type="submit" [routerLink]="['/']" class="apply"> Quay lại</button></td>
+            </tr>
+        </table>
+   
+</div>
+

@@ -1,0 +1,97 @@
+*{
+
+	margin:0;
+	padding: 0;
+}
+
+button.apply {
+    margin-right: 205px;
+    margin-top: 40px;
+    width: 75px;
+    height: 35px;
+    border: none;
+    background-color: #337ab7;
+    color: #fffc;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+
+input.mathi {
+    height: 22px;
+    margin-left: 157px;
+}
+input.kithi{
+    width: 173px;
+}
+
+button.taoma {
+    width: 75px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    background-color: #337ab7;
+    color: #fffc;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+    margin-left: 0px;
+}
+
+.form table tr td {
+    width: 160px;
+    height: 30px;
+    font-family: sans-serif;
+}
+
+.form h1 {
+    text-align: center;
+    font-size: 40px;
+    font-family: sans-serif;
+    margin-bottom: 30px;
+}
+
+table {
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+form.form-group {
+    width: 800px;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.modal-content{
+    margin:40% 20%;
+}
+.maginleft {
+    margin-left: 15%;
+}
+.mat-input-element:disabled {
+    color: rgba(0, 0, 0, 0.8);
+}
+body{margin-top:50px;}
+.glyphicon { margin-right:10px; }
+.panel-body { padding:0px; }
+.panel-body table tr td { padding-left: 15px }
+.panel-body .table {margin-bottom: 0px; }
+.panel-title{
+    height: 40px;
+}
+.panel-title{
+    line-height: 43px;
+    margin-left: 65px;
+}
+.panel-heading{
+    background-color: beige;
+}
+*{
+    font-size: 16px;
+    
+}

@@ -1,0 +1,143 @@
+<div class="modal-header">
+  <a class="btn btn-danger" href="" style="float: right;" routerLink="/exam">Go Back</a>
+  <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span
+          class="glyphicon glyphicon-remove" aria-hidden="true"></span></button> -->
+  <h2 class="modal-title custom_align" id="Heading" style="margin-left: 40%">Create Exam</h2>
+</div>
+
+<div class="container" style="width: 70%;">
+  <form novalidate (ngSubmit)="onSubmit()" [formGroup]="examForm" class="row justify-content-md-center">
+    <div class="col-md-8" style="margin-left: 10%;">
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">
+          Name exam:
+        </label>
+        <div class="col-10">
+          <input class="form-control"  type="text" [pattern]="regex" id="example-text-input" formControlName="NameExam">
+        </div>
+      </div>
+      <div *ngIf="!NameExam.valid && NameExam.touched" style="color: red">
+        <span *ngIf="NameExam.hasError('required')">
+          Name exam is required
+        </span>
+        <span *ngIf="NameExam.hasError('maxLength')">
+          Name exam maxlength 50 character
+        </span>
+        <span *ngIf="NameExam.hasError('pattern')">
+          Name exam is not format!
+        </span>
+       
+
+      </div>
+      <div class="form-group row">
+        <label for="example-email-input" class="col-2 col-form-label">
+          Create By:
+        </label><br />
+        <div class="col-10">
+            <input class="form-control" value={{UserName}} [readonly]=true type=""  id="example-email-input">
+          </div>
+        <!-- <div class="col-10">
+          <input type="text"   class="form-control"  id="example-text-input" formControlName="CreateBy">
+          <select class="bootstrap-select" style="width: 100%; height: 35px;" >
+              <option value="admin" selected="selected">admin</option>
+              <option value="manager">manager</option>
+            
+              
+            </select> -->
+        <!-- </div>  -->
+
+      </div>
+      <!-- <div *ngIf="!CreateBy.valid && CreateBy.touched" style="color: red">
+        <span *ngIf="CreateBy.hasError('required')">
+          Create by is required
+        </span>
+      
+      </div> -->
+      <div class="form-group row">
+        <label for="example-email-input" class="col-2 col-form-label">
+          Category:
+        </label><br />
+        <!-- <div class="col-10">
+            <input class="form-control" type="" formControlName="createBy" id="example-email-input">
+          </div> -->
+        <div class="col-10">
+
+
+          
+              <select  class="bootstrap-select" style="width: 100%; height: 35px;" formControlName="CategoryId">
+                  <option  *ngFor="let item of CategoryFormApi" value="{{item.Id}}">{{item.Name}}</option>
+                </select>
+        </div>
+
+      </div>
+      <div class="form-group row">
+        <label for="example-url-fb" class="col-2 col-form-label">
+          Question number:
+        </label>
+        <div class="col-10">
+          <input class="form-control" type="text" [pattern]="number"
+            formControlName="QuestionNumber" id="example-url-fb">
+        </div>
+      </div>
+      <div *ngIf="!QuestionNumber.valid && QuestionNumber.touched" style="color: red">
+        <div *ngIf="QuestionNumber.hasError('required')">
+          Question number is required
+        </div>
+        <div *ngIf="QuestionNumber.hasError('pattern')">
+          Question number is not format!
+        </div>
+     
+
+      </div> 
+     
+
+      
+
+            <div class="form-group row">
+              <label for="example-url-fb" class="col-2 col-form-label">
+                Space QuestionNumber:
+              </label>
+              <div class="col-10">
+                <input class="form-control" type="text"  value="{{100}}"  [pattern]="number"
+                  formControlName="SpaceQuestionNumber" id="example-url-fb" disabled>
+              </div>
+            </div>
+            <div *ngIf="!SpaceQuestionNumber.valid && SpaceQuestionNumber.touched" style="color: red">
+              <div *ngIf="SpaceQuestionNumber.hasError('required')">
+                Space QuestionNumber is required
+              </div>
+              <div *ngIf="SpaceQuestionNumber.hasError('pattern')">
+                Space QuestionNumber is not format!
+              </div>
+           
+      
+            </div>
+            
+          
+      <div class="form-group row">
+        <label for="example-tel-input" class="col-2 col-form-label">
+          Note:
+        </label>
+        <div class="col-10">
+          <ckeditor [editor]="Editor" id="classic-editor" name="classic-editor" style="height:200px;"
+            formControlName="Note">
+          </ckeditor>
+        </div>
+      </div>
+
+      <!-- <label for="example-tel-input" class="col-2 col-form-label">
+              Note:
+            </label>
+          <ckeditor [editor]="Editor" id="classic-editor" name="classic-editor">
+            </ckeditor> -->
+      <div class="form-group row">
+        <div class="col-10 offset-2">
+          <!-- <button class="btn btn-primary"
+              type="submit" (click)="onSubmit()">Create</button> -->
+          <button type="submit"  [disabled]="!examForm.valid" (click)="validateForm()" class="btn btn-primary" style="margin-left: 35%;">Save</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>

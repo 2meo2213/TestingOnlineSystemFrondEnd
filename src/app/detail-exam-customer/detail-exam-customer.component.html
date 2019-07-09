@@ -1,0 +1,182 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+<!-- MENU-->
+
+<div class="navbar navbar-inverse navbar-fixed-top opaque-navbar" *ngIf="!currentUser"  style="height: 52px">
+  <div class="container-fluid">
+    <div class="navbar-header logo" style="line-height: 45px">
+      <a [routerLink]="['']" routerLinkActive="active"><img src="../../assets/image/logo_vn_white.png"
+          height="35px" /></a>
+    </div>
+    <div *ngIf="UserName; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+      <ul class="nav navbar-nav pull-right" style="margin-right: 5%;line-height: 50px">
+          <li ><a routerLink="/group"><i class="fa fa-lock"></i>Admin Manager</a></li>
+          <li>
+              <a class="btn" [routerLink]="['']" routerLinkActive="active"><span><i class="fa fa-home"></i></span>Home</a>
+            </li>
+
+        <li class="pointer"><a (click)="Logout()">
+            <i class="fa fa-sign-out"></i>Sign out</a></li>
+
+        <li>
+          <a class="btn" routerLinkActive="active"><span><i class="fa fa-user fa-fw"></i></span>{{UserName}}</a>
+        </li>
+      </ul>
+    </ng-template>
+    <ng-template #elseBlock>
+      <ul class="nav navbar-nav pull-right" style="margin-right: 5%">
+
+        <li><a>Register</a></li>
+        <li>
+          <a class="btn" [routerLink]="['login']" routerLinkActive="active"><span><i
+                class="fa fa-user fa-fw"></i></span>Sign In</a>
+        </li>
+      </ul>
+    </ng-template>
+
+    <ul class="nav navbar-nav pull-right">
+
+
+     
+    </ul>
+
+
+
+  </div>
+</div>
+<div *ngIf="notify; then thenBlock else elseBlock">
+</div>
+<ng-template #thenBlock>
+
+  <!--END-->
+
+
+
+
+
+
+<div class="container" style="margin-top: 7%">
+
+  
+ 
+
+    <div class="col-md-7 well" style="float: left; ">
+      <h2 style="font-size:27px;margin-top: 0;text-transform: uppercase">{{list.TestName}}</h2>
+      <hr/>
+
+      <div class="col-md-12 col-sm-12" >
+        <div class="portlet box blue-hoki tasks-widget"style="border: 1px solid #009CDE">
+          <div class="portlet-title">
+            <div class="caption"  style="color:white;font-size: 18px;border-top:1px solid #009CDE  ">
+              <i class="fa fa-calendar"></i>Thông tin chung 
+            </div>
+            <div class="tools">
+              <a  data-original-title="" title="" class="collapse"></a>
+            </div>
+          </div>
+
+          <div class="portlet-body">
+            <div class="row">
+              <div class="col-md-12">
+                <p class="h5" style="padding-bottom: 10px;margin-left: 10px">
+                  Bài thi: <b>{{list.TestName}}</b>
+                </p>
+               
+              </div>
+           
+            </div>
+            
+          </div>
+           
+
+        </div>
+          <!-- binh luan-->
+<!--             
+          <div class="user-comment">
+              <div class="user-comment-title">
+                  <span class="uppercase bold" style="float: left;font-weight: 700 !important;"> BÌNH LUẬN </span>
+              </div>
+              <div class="chat-form">
+                  <div class="input-cont">
+                      <input placeholder="Nội dung bình luận..." id="NewComment_2-5255" class="form-control" type="text">
+                  </div>
+                  <div class="btn-cont">
+                      <span class="arrow"> </span>
+                      <a class="btn blue icn-only" onclick="CreateNewComment(2, 5255)"> Gửi</a>
+                  </div>
+              </div>
+              </div> -->
+
+           <!-- -->
+
+        
+      </div>
+
+     
+    </div>
+
+    <div class="col-md-2" style="width: 40%;margin-top: -25px;border: 1px sandybrown;border-top: none" *ngIf="list">
+      <!-- <a [routerLink]="[this.chuoi ]">
+        <li class="active" style="text-align:center;margin-top: 0px;margin-bottom: 20px;list-style-type: none; width: 100%;height: 50px; background:#009CDE;line-height: 50px;color: white;font-size: 18px ">
+            <i class="fa fa-sign-in"></i>Vào Thi
+        </li>
+      </a> -->
+      <li class=active style="list-style-type: none">
+      
+        <a [routerLink]="[this.chuoi ]" data-text="Vào Thi" (click)="test()" class="abcd">
+            <i class="fa fa-sign-in"></i>
+          Vào Thi</a>
+          
+      
+
+    </li>
+      <ul class="nav nav-pills nav-stacked" style="border: solid 1px #d8d8d8;border-top: 2px solid #009CDE;margin-top: 90px;text-transform: uppercase" >
+
+
+        <li >
+         <i class="fa fa-list-alt fa-fw"></i>CHỦ ĐỀ THI:
+
+          <span>{{list.CategoryName}}</span></li>
+        <hr />
+
+        <li>
+           <i class="fa fa-file-o fa-fw"></i>TỔNG SỐ CÂU HỎI:
+        
+
+        <span> {{list.QuestionNumber}}</span> </li>
+        <hr />
+
+        <li>
+          <i class="fa fa-bar-chart-o fa-fw"></i>SỐ CÂU TRẮC NGHIỆM:
+        <span>{{list.QuestionNumber}}</span> 
+          </li>
+        <hr />
+
+        <!-- <li>
+          <i class="fa fa-table fa-fw"></i>SỐ CÂU TỰ LUẬN:
+          
+       <span>{{list.NumberStatementQuestion}}</span> 
+         </li>
+
+        <hr /> -->
+        <li> <i class="fa fa-tasks fa-fw"></i>TỔNG ĐIỂM:
+         
+         <span> {{list.TotalScore}}</span>
+        
+         </li>
+        <hr />
+        <li>
+            <i class="fa fa-calendar fa-fw"></i>THỜI GIAN LÀM BÀI:
+       
+          
+       <span>{{list.TestTime}}phút</span> 
+         </li>
+
+      </ul>
+    </div>
+
+  </div>

@@ -1,0 +1,45 @@
+<div class="container col-md-12" style="text-align: center">
+  <h3>Thông tin chi tiết kỳ thi</h3>
+  <span>Tên kỳ thi:</span>
+</div>
+<div class="col-md-12" style="margin-top: 10%">
+  <span>Danh sách các bài thi</span>
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+      <ng-container matColumnDef="ID">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.ID}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="SemesterName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> SemesterName </th>
+          <td mat-cell *matCellDef="let element"> {{element.SemesterName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="StartDay">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> StartDay </th>
+          <td mat-cell *matCellDef="let element"> {{element.StartDay}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="EndDay">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> EndDay </th>
+          <td mat-cell *matCellDef="let element"> {{element.EndDay}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Code">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Tác vụ </th>
+          <td mat-cell *matCellDef="let element"> <button (click)="ViewTest(element.ID)" [routerLink]="['/thi/',element.ID]"  ><i class="fa fa-arrow-right"></i></button> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status" hidden>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header hidden> Status </th>
+          <td mat-cell *matCellDef="let element" hidden> {{element.status}} </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumn"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumn;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[1,2]" showFirstLastButtons></mat-paginator>
+</div>

@@ -1,0 +1,41 @@
+      <table class="table ">
+        <tbody>
+          <tr>
+            <td>Media</td>
+            <td>
+              <div class="input-group" style="width: 267px;height: 40px;">
+                <div class="custom-file">
+                  <input formControlName="Media" type="file" class="custom-file-input" id="inputGroupFile01"
+                    aria-describedby="inputGroupFileAddon01">
+                </div>
+              </div>
+            </td>
+            <td>Status</td>
+            <td>
+              <select formControlName="Status" class="selectpicker" data-live-search="true"
+                style="width: 267px;height: 40px;">
+                <option value="1" data-tokens="ketchup mustard">status 1</option>
+                <option value="2" data-tokens="mustard">status 2</option>
+                <option value="3" data-tokens="frosting">status 3</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Content</td>
+            <td>
+              <ckeditor formControlName="Content" [editor]="Editor" id="classic-editor" name="classic-editor">
+              </ckeditor>
+            </td>
+            <td>isTue</td>
+            <td>
+              <label class="checkbox-inline">
+                <input formControlName="IsTrue" type="checkbox">
+              </label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button style="margin-left: 45%;" type=" button" class="btn btn-danger">Delete</button>
+      <br>
+      <br>
+      

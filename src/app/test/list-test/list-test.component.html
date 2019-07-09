@@ -1,0 +1,141 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <!-- <section class="content-header">
+    <h1>
+      Dashboard
+      <small>Control panel</small>
+    </h1> -->
+    <!-- <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Dashboard</li>
+    </ol> 
+  
+  </section> -->
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container col-md-12">
+      <div style="padding: 10px;">
+          <input [(ngModel)]="searchString" type="text" placeholder="Search..">
+          <button (click)="onSearch()" type="submit"><i class="fa fa-search"></i></button>
+         
+          <div class="container col-md-12">
+              <span data-placement="top" data-toggle="tooltip"><button class="btn btn-primary " routerLink="/test/create" data-title="Create"
+                      data-toggle="modal" data-target="#create" style="margin-left: 90.5%;margin-bottom: 5px;"
+                      id="Create"><span>Create</span></button></span>
+                      
+          </div>
+          <hr />
+      </div>
+      <!-- <div class="col-md-12">
+          <div class="col-md-6">
+              <span><b>Filter</b></span>
+          </div>
+          <div class="col-md-6">
+              <i style="float: right" class="fas fa-sort-down fa-2x"></i>
+          </div>
+      </div> -->
+  </div>
+  <div class="container" style="margin-top: 2%">
+     
+  </div>
+
+  <div class="container col-md-12" style="text-align: center">
+      <h2>List Test
+          <button style="float: right" mat-raised-button color="warn">Delete</button>
+      </h2>
+
+  </div>
+  <div style="margin-top: 2%">
+  
+
+      <table mat-table [dataSource]="dataSource" matSort>
+  
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+              [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+              [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+      
+        <!-- UserName Column -->
+        <ng-container matColumnDef="TestName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> TestName </th>
+          <td mat-cell *matCellDef="let element"> {{element.TestName}} </td>
+        </ng-container>
+      
+        <!-- FullName Column -->
+        <ng-container matColumnDef="NameExam">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> NameExam </th>
+          <td mat-cell *matCellDef="let element"> {{element.NameExam}} </td>
+        </ng-container>
+      
+        <!-- Enail Column -->
+        <ng-container matColumnDef="CreateBy">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> CreateBy </th>
+          <td mat-cell *matCellDef="let element"> {{element.CreateBy}} </td>
+        </ng-container>
+        <!-- Department column-->
+       
+        <!-- Position column-->
+        <ng-container matColumnDef="PassScore">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> PassScore </th>
+          <td mat-cell *matCellDef="let element"> {{element.PassScore}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="SemesterName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> SemesterName </th>
+          <td mat-cell *matCellDef="let element"> {{element.SemesterName}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="Status">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+          <td mat-cell *matCellDef="let element"> {{element.Status?"Public":"Dark"}} </td>
+        </ng-container>
+
+  
+        <ng-container matColumnDef="Action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+          <td mat-cell *matCellDef="let element">
+            <span data-placement="top" data-toggle="tooltip" title="Delete">
+              <button (click)="deleteTest(element.Id)"  class="btn btn-danger btn-xs"data-title="Delete" data-toggle="modal" data-target="#delete">
+                <span class="glyphicon glyphicon-trash"></span>
+              </button>
+            </span>
+            <span data-placement="top" data-toggle="tooltip" title="Detail">
+                <button [routerLink]="['/test',element.Id]" class="btn btn-success btn-xs"
+                data-title="Detail"   data-target="#detail"><span
+                class="glyphicon glyphicon-list-alt"></span></button>
+              </span>
+              <span data-placement="top" (click)="navigateToEdit(element.Id)" data-toggle="tooltip" title="Update">
+                <button   class="btn btn-primary btn-xs"
+                     ><span
+                class="glyphicon glyphicon-pencil"></span></button>
+              </span>
+          </td>
+         
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumn"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumn;"></tr>
+      </table>
+    
+      <mat-paginator [pageSizeOptions]="[5,10,15]" showFirstLastButtons></mat-paginator>
+  </div>
+
+
+
+
+  </section>
+  <!-- /.content -->
+</div>
+
+
+

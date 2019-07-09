@@ -1,0 +1,42 @@
+.example-container {
+    height: 400px;
+    width: 550px;
+    overflow: auto;
+  }
+  
+  table {
+    width: 90%;
+    margin: 0 auto;
+    margin-left: 10%;
+  }
+  
+  td.mat-column-star {
+    width: 20px;
+    padding-right: 8px;
+  }
+  
+  th.mat-column-position, td.mat-column-position {
+    padding-left: 8px;
+  }
+  
+  .mat-table-sticky:first-child {
+    border-right: 1px solid #e0e0e0;
+  }
+  
+  .mat-table-sticky:last-child {
+    border-left: 1px solid #e0e0e0;
+  }
+  img{
+    width: 150px;
+  }
+
+  td p figure img{
+  
+    width: 150px;
+  
+  }
+  :host ::ng-deep img { 
+    max-width: 400px;
+  }
+  
+ 

@@ -1,0 +1,43 @@
+.header-right{
+    
+    text-align: right;
+}
+.header-right a{
+    
+    margin-left: 50px;
+}
+.icon p{
+    font-weight: bold;
+    font-size: 20px;
+}
+.filter{
+   
+  
+}
+.clearfix:after{
+    display: block;
+    clear: both;
+    content: "";
+}
+.title-right a{
+text-align: right
+}
+.title-right{
+    float: right !important;
+}
+.action a{
+margin-left: 10px;
+}
+img{
+    width: 150px;
+  }
+  
+  td p figure img{
+  
+    width: 150px;
+  
+  }
+  :host ::ng-deep img {
+    max-width: 150px;
+  }
+  

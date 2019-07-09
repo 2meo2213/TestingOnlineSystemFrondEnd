@@ -1,0 +1,40 @@
+ul li{
+    list-style: none;
+    margin: 10px 0px;
+}
+h2{
+    text-align: center;
+}
+.thongtin{
+
+    width: 400px;
+    height: 500px;		
+    align-items: center;
+    justify-content: center;
+  
+    margin:0 auto;
+    border: 1px black solid;
+}
+.wrapper{
+    display:flex;
+    height: 100vh;
+    text-align: center;
+    background-color: white;
+   
+}
+button.apply {
+    margin-right: 50px;
+    margin-top: 40px;
+    width: 75px;
+    height: 35px;
+    border: none;
+    background-color: #337ab7;
+    color: #fffc;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+table.ds-2{
+    margin-left: 50px;
+}
