@@ -27,7 +27,7 @@ insertForm:FormGroup;
       this.myservice.changeMessage('1');
    });
    } 
-   displayedColumn: string[] = ['select', 'SubjectName','Status','CreatedDate','Action'];
+   displayedColumn: string[] = ['select', 'SubjectName','Status','CreatedDate','NameExam','Action'];
    dataSource = new MatTableDataSource<ISubject>(this.subjects);
 
    selection = new SelectionModel<ISubject>(true, []);
@@ -49,7 +49,12 @@ insertForm:FormGroup;
   get Status(): FormControl {
     return this.insertForm.get('Status') as FormControl;
   }
-
+  get NameExam(): FormControl {
+    return this.insertForm.get('NameExam') as FormControl;
+  }
+  get ExamId(): FormControl {
+    return this.insertForm.get('ExamId') as FormControl;
+  }
 
   getlist()
   {
@@ -69,6 +74,8 @@ insertForm:FormGroup;
     {
       SubjectName: new FormControl('', [Validators.required],),
       Status: new FormControl('', [Validators.required]),
+      ExamId: new FormControl('', [Validators.required]),
+      NameExam: new FormControl('', [Validators.required]),
     }
 
   );
@@ -166,6 +173,11 @@ submitEdit(id) {
           }
         });
     }
+  }
+
+  public doFilter = (value: string) => {
+    console.log(value);
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
   removeSelectedRows1() {
     let arrId = '';

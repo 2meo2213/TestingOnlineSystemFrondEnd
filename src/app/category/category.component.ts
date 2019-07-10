@@ -35,7 +35,6 @@ export class CategoryComponent implements OnInit {
   dataSource = new MatTableDataSource<Category>(this.categorys);
 
   selection = new SelectionModel<Category>(true, []);
-
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
